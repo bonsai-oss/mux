@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/bonsai-oss/mux"
 )
 
 // This example demonstrates setting a regular expression matcher for

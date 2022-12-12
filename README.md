@@ -1,8 +1,9 @@
-# gorilla/mux
+# bonsai-oss/mux
 
-[![GoDoc](https://godoc.org/github.com/gorilla/mux?status.svg)](https://godoc.org/github.com/gorilla/mux)
-[![CircleCI](https://circleci.com/gh/gorilla/mux.svg?style=svg)](https://circleci.com/gh/gorilla/mux)
-[![Sourcegraph](https://sourcegraph.com/github.com/gorilla/mux/-/badge.svg)](https://sourcegraph.com/github.com/gorilla/mux?badge)
+[![GoDoc](https://godoc.org/github.com/bonsai-oss/mux?status.svg)](https://godoc.org/github.com/bonsai-oss/mux)
+![](https://gitlab.com/bonsai-oss/mux/badges/master/pipeline.svg)
+![](https://gitlab.com/bonsai-oss/mux/badges/master/coverage.svg)
+[![Sourcegraph](https://sourcegraph.com/github.com/bonsai-oss/mux/-/badge.svg)](https://sourcegraph.com/github.com/bonsai-oss/mux?badge)
 
 ![Gorilla Logo](https://cloud-cdn.questionable.services/gorilla-icon-64.png)
 
@@ -12,7 +13,7 @@
 
 ---
 
-Package `gorilla/mux` implements a request router and dispatcher for matching incoming requests to
+Package `bonsai-oss/mux` implements a request router and dispatcher for matching incoming requests to
 their respective handler.
 
 The name mux stands for "HTTP request multiplexer". Like the standard `http.ServeMux`, `mux.Router` matches incoming requests against a list of registered routes and calls a handler for the route that matches the URL or other conditions. The main features are:
@@ -45,7 +46,7 @@ The name mux stands for "HTTP request multiplexer". Like the standard `http.Serv
 With a [correctly configured](https://golang.org/doc/install#testing) Go toolchain:
 
 ```sh
-go get -u github.com/gorilla/mux
+go get -u github.com/bonsai-oss/mux
 ```
 
 ## Examples
@@ -234,7 +235,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/gorilla/mux"
+	"github.com/bonsai-oss/mux"
 )
 
 // spaHandler implements the http.Handler interface, so we can use it
@@ -392,7 +393,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gorilla/mux"
+	"github.com/bonsai-oss/mux"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -455,7 +456,7 @@ import (
     "os/signal"
     "time"
 
-    "github.com/gorilla/mux"
+    "github.com/bonsai-oss/mux"
 )
 
 func main() {
@@ -472,7 +473,7 @@ func main() {
         WriteTimeout: time.Second * 15,
         ReadTimeout:  time.Second * 15,
         IdleTimeout:  time.Second * 60,
-        Handler: r, // Pass our instance of gorilla/mux in.
+        Handler: r, // Pass our instance of bonsai-oss/mux in.
     }
 
     // Run our server in a goroutine so that it doesn't block.
@@ -506,7 +507,7 @@ func main() {
 
 ### Middleware
 
-Mux supports the addition of middlewares to a [Router](https://godoc.org/github.com/gorilla/mux#Router), which are executed in the order they are added if a match is found, including its subrouters.
+Mux supports the addition of middlewares to a [Router](https://godoc.org/github.com/bonsai-oss/mux#Router), which are executed in the order they are added if a match is found, including its subrouters.
 Middlewares are (typically) small pieces of code which take one request, do something with it, and pass it down to another middleware or the final handler. Some common use cases for middleware are request logging, header manipulation, or `ResponseWriter` hijacking.
 
 Mux middlewares are defined using the de facto standard type:
@@ -586,7 +587,7 @@ Note: The handler chain will be stopped if your middleware doesn't call `next.Se
 
 ### Handling CORS Requests
 
-[CORSMethodMiddleware](https://godoc.org/github.com/gorilla/mux#CORSMethodMiddleware) intends to make it easier to strictly set the `Access-Control-Allow-Methods` response header.
+[CORSMethodMiddleware](https://godoc.org/github.com/bonsai-oss/mux#CORSMethodMiddleware) intends to make it easier to strictly set the `Access-Control-Allow-Methods` response header.
 
 * You will still need to use your own CORS handler to set the other CORS headers such as `Access-Control-Allow-Origin`
 * The middleware will set the `Access-Control-Allow-Methods` header to all the method matchers (e.g. `r.Methods(http.MethodGet, http.MethodPut, http.MethodOptions)` -> `Access-Control-Allow-Methods: GET,PUT,OPTIONS`) on a route
@@ -600,7 +601,7 @@ package main
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
+	"github.com/bonsai-oss/mux"
 )
 
 func main() {
@@ -787,7 +788,7 @@ package main
 import (
     "net/http"
     "log"
-    "github.com/gorilla/mux"
+    "github.com/bonsai-oss/mux"
 )
 
 func YourHandler(w http.ResponseWriter, r *http.Request) {
