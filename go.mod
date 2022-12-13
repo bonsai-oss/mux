@@ -1,3 +1,3 @@
 module github.com/bonsai-oss/mux
 
-go 1.12
+go 1.19
